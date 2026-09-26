@@ -1,1 +1,0 @@
-Nuevo fichero de pruebas
