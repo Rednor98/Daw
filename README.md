@@ -1,2 +1,1 @@
-# Mi proyecto Git
-Estoy aprendiendo Git
+Nuevo fichero de pruebas
