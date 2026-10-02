@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <script>
+
+        window.onload = function () {
+            let resultat = document.getElementById("resultat");
+            document.getElementById("Boton1").onclick = function () {
+                const paraula = prompt("Introdueix una de aquestes paraules (casa, taula,gos, gat)").toLowerCase();
+                let res = "";
+                switch (paraula) {
+                    case "casa":
+                        res = "House";
+                        break;
+                    case "taula":
+                        res = "Table";
+                        break;
+                    case "gos":
+                        res = "Dog";
+                        break;
+                    case "gat":
+                        res = "Cat";
+                        break;
+                    default:
+                        res = "Te que se una de las 4 paraules explicades"
+                        break;
+                }
+                resultat.innerHTML = res;
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <input id="Boton1" type="button" value="Boton 1" />
+
+
+    <div id="resultat"></div>
+</body>
+
+</html>
