@@ -1,31 +1,70 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <script>
-            let result = document.getElementById("resultat").innerHTML;
-            window.onload = function(){
-                document.getElementById("Boton1") = function(){
-                    let num1 = parseInt(prompt("Introduce un valor"));
-                    let num2 = parseInt(prompt("Introduce un valor"));
-                    let num3 = parseInt(prompt("Introduce un valor"));
-                    let res = 0;
-                    if(num1 == num2 && num1 == num3){
-                        res = (num1 + num2) * num3;
 
-                        result = res;
-                    }
-                    
+<head>
+    <meta charset="UTF-8">
+    <script>
+
+        window.onload = function () {
+            let resultat = document.getElementById("resultat");
+            document.getElementById("Boton1").onclick = function () {
+                let num1 = parseInt(prompt("Introduce un valor"));
+                let num2 = parseInt(prompt("Introduce un valor"));
+                let num3 = parseInt(prompt("Introduce un valor"));
+                let res = 0;
+                if (num1 == num2 && num1 == num3) {
+                    res = (num1 + num2) * num3;
+                    resultat.innerHTML = `El resultat es: ${res}`;
+                } else {
+                    resultat.innerHTML = "Els números no són iguals !!";
                 }
             }
-        </script>
-    </head>
-    <body> 
-        <input id="Boton1" type="button" value="Boton1"/>
-        <input id="Boton2" type="button" value="Boton2"/>
-        <input id="Boton3" type="button" value="Boton3"/>
-        <input id="Boton4" type="button" value="Boton4"/>
+            document.getElementById("Boton2").onclick = function () {
+                let num1 = parseInt(prompt("Introduce un valor"));
+                let num2 = parseInt(prompt("Introduce un valor"));
+                let num3 = parseInt(prompt("Introduce un valor"));
+                
+                if(num1 < 10 && num2 < 10 && num3 < 10 ){
+                    resultat.innerHTML = "Tots el números són menors a deu";
+                }
+            }
+            document.getElementById("Boton3").onclick = function(){
+                let sou = parseFloat(prompt("Introdueix el teu sou"));
+                let antiguitat = parseInt(prompt("Introdueix la teva antiguitat en la empresa"));
 
-        <div id="resultat"></div>
-    </body>
+                if(sou < 1000 && antiguitat >= 10){
+                    resultat.innerHTML = `El teu sou es: ${sou * 1.20}`;
+                }else if(sou < 1000 && antiguitat < 10){
+                     resultat.innerHTML = `El teu sou es: ${sou * 1.02}`;
+                }else if(sou >= 1000){
+                     resultat.innerHTML = `El teu sou es: ${sou}`;
+                }
+            }
+            document.getElementById("Boton4").onclick = function(){
+                let resp = prompt("Per fe el descompte al preu tens que ser sincer, ets (estudiant o menor)? ");
+
+                if(resp !== "estudiant" && resp !== "menor"){
+                    alert("Ten que especifica si (estudiant o menor)!!");
+                    return;
+                }
+
+                if(resp == "estudiant"){
+                    resultat.innerHTML = "No aplicar descompte";
+                }else if(resp == "menor"){
+                    resultat.innerHTML = "Aplicar descompte";
+                }
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <input id="Boton1" type="button" value="Boton 1" />
+    <input id="Boton2" type="button" value="Boton 2" />
+    <input id="Boton3" type="button" value="Boton 3" />
+    <input id="Boton4" type="button" value="Boton 4" />
+
+    <div id="resultat"></div>
+</body>
+
 </html>
