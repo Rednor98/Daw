@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <script>
+            let result = document.getElementById("resultat").innerHTML;
+            window.onload = function(){
+                document.getElementById("Boton1") = function(){
+                    let num1 = parseInt(prompt("Introduce un valor"));
+                    let num2 = parseInt(prompt("Introduce un valor"));
+                    let num3 = parseInt(prompt("Introduce un valor"));
+                    let res = 0;
+                    if(num1 == num2 && num1 == num3){
+                        res = (num1 + num2) * num3;
+
+                        result = res;
+                    }
+                    
+                }
+            }
+        </script>
+    </head>
+    <body> 
+        <input id="Boton1" type="button" value="Boton1"/>
+        <input id="Boton2" type="button" value="Boton2"/>
+        <input id="Boton3" type="button" value="Boton3"/>
+        <input id="Boton4" type="button" value="Boton4"/>
+
+        <div id="resultat"></div>
+    </body>
+</html>

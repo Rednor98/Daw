@@ -1,0 +1,92 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>Exercici2c</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+        window.onload = function () {
+
+            document.getElementById("boton1").onclick = function () {
+                const valor1 = prompt("Introdueix el primer número:");
+                const valor2 = prompt("Introdueix el segon número:");
+
+                const suma = parseInt(valor1) + parseInt(valor2);
+                const producte = valor1 * valor2;
+
+                let res = '<p>La suma és: ' + suma + '<p>';
+                res += '<p>El producte és: ' + producte + '</p>';
+
+                document.getElementById("resultat").innerHTML = res;
+            }
+            document.getElementById("boton2").onclick = function () {
+                const valorCostat = prompt("Introdueix el valor del Costat de un quadrat");
+
+                const perimetreQuadrat = valorCostat * 4;
+                document.getElementById("resultat").innerHTML = perimetreQuadrat;
+            };
+            document.getElementById("boton3").onclick = function () {
+                const valor1 = prompt("Introdueix el primer valor");
+                const valor2 = prompt("Introdueix el segond valor");
+                const valor3 = prompt("Introdueix el tercer valor");
+                const valor4 = prompt("Introdueix el quart valor");
+
+
+                const suma = parseInt(valor1) + parseInt(valor2) + parseInt(valor3) + parseInt(valor4);
+                const producte = valor1 * valor2 * valor3 * valor4;
+
+
+                let res = '<p>La suma del primer valor y el segon es: ' + suma + '<p>';
+                res += '<p>El producte del terce valor y el quart valor es: ' + producte + '</p>';
+
+
+
+                document.getElementById("resultat").innerHTML = res;
+            };
+            document.getElementById("boton4").onclick = function () {
+                const valor1 = prompt("Introdueix el primer valor");
+                const valor2 = prompt("Introdueix el segond valor");
+                const valor3 = prompt("Introdueix el tercer valor");
+                const valor4 = prompt("Introdueix el quart valor");
+
+
+                const suma = parseInt(valor1) + parseInt(valor2);
+                const producte = valor3 * valor4;
+
+                let res = '<p>La suma total dels valors es: ' + suma + '<p>';
+                res += '<p>El producte total del valors es: ' + producte + '</p>';
+
+                document.getElementById("resultat").innerHTML = res;
+            };
+
+            document.getElementById("boton5").onclick = function () {
+                const preu = prompt("Introdueix el preu del producte");
+                const quantitat = prompt("Introdueix la quantitat");
+
+
+
+                const preuTotal = parseInt(preu) * parseInt(quantitat);
+
+                let res = '<p>Preu Total: ' + preuTotal + ' €<p>';
+
+
+                document.getElementById("resultat").innerHTML = res;
+            };
+
+
+        };
+    </script>
+</head>
+
+<body>
+    <h1> Estructures seqüencials de programació</h1>
+    <input type="button" value="Exemple" id="boton1">
+    <input type="button" value="Exercici 1" id="boton2">
+    <input type="button" value="Exercici 2" id="boton3">
+    <input type="button" value="Exercici 3" id="boton4">
+    <input type="button" value="Exercici 4" id="boton5">
+    <div id="resultat"></div>
+</body>
+
+</html>

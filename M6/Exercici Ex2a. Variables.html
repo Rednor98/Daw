@@ -1,0 +1,53 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>Exercici</title>
+    <meta charset="UTF-8">
+    <script>
+        window.onload = function () {
+            let num = 0;
+            const res = document.getElementById("resultat");
+            document.getElementById("boton1").onclick = function () {
+                var nombre = "Adrián Pereira Espinosa"
+                var sueldo = 1400;
+
+                res.innerHTML = `<p><b>Nombre del trabajador: </b>${nombre}</p> 
+                                                                <p><b>Sueldo del trabajador: </b>${sueldo}</p> `;
+            };
+
+            document.getElementById("boton2").onclick = function () {
+                var arrayMeses = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
+                var arrayMesesImpares = [];
+                for (let index = 0; index < arrayMeses.length; index++) {
+
+                    if (index % 2 == 0) {
+                        arrayMesesImpares += ` <p>${arrayMeses[index]}</p>`;
+                    }
+
+                }
+                res.innerHTML = arrayMesesImpares;
+            }
+            document.getElementById("boton3").onclick = function () {
+                res.innerHTML = num++;
+            };
+            document.getElementById("boton4").onclick = function () {
+                const radi = prompt("Introduce un radio");
+
+                res.innerHTML = 'El radio es: ' + Math.floor(2 * Math.PI * radi);
+            };
+
+        };
+    </script>
+
+</head>
+
+<body>
+    <input type="button" value="Ejercicio 1" id="boton1">
+    <input type="button" value="Ejercicio 2" id="boton2">
+    <input type="button" value="Ejercicio 3" id="boton3">
+    <input type="button" value="Ejercicio 4" id="boton4">
+    <div id="resultat"></div>
+</body>
+
+</html>

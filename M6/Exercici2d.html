@@ -1,0 +1,178 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>Exercici</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+        window.onload = function () {
+            let res = "";
+            document.getElementById("boton1").onclick = function () {
+                let nota1 = prompt("Introdueix la nota de l'examen 1:");
+                let nota2 = prompt("Introdueix la nota de l'examen 2:");
+                let nota3 = prompt("Introdueix la nota de l'examen 3:")
+
+                const mitjana = (parseFloat(nota1) + parseFloat(nota2) + parseFloat(nota3)) / 3;
+
+
+
+                if (mitjana >= 5) {
+                    res = `Amb un mitjana de: ${mitjana} es Promocionat`;
+                } else {
+                    res = `Amb un mitjana de: ${mitjana} es No promocionat`;
+                }
+
+                document.getElementById("resultat").innerHTML = res;
+            };
+            document.getElementById("boton2").onclick = function () {
+                let password = prompt("Introdueix el password");
+                let passwordAgain = prompt("Introdueix de nou el password");
+
+                const checkPassword = password == passwordAgain;
+
+                if (checkPassword) {
+                    res = "Los passwords son iguals";
+                } else {
+                    res = "Los passwords no son iguals";
+                }
+
+                document.getElementById("resultat").innerHTML = res;
+            };
+            document.getElementById("boton3").onclick = function () {
+                let num1 = prompt("Introdueix el primer nombre");
+                let num2 = prompt("Introdueix el segon nombre");
+
+                if (num1 > num2) {
+                    res = "La suma es: " + (parseInt(num1) + parseInt(num2));
+                } else {
+                    res = "El producte es:" + num1 * num2;
+                }
+                document.getElementById("resultat").innerHTML = res;
+            };
+            document.getElementById("boton4").onclick = function () {
+                let num = prompt("Introdueix un numero de maxim 2 digits");
+
+                if (num.length <= 2) {
+                    if (num.length == 1) {
+                        res = `El nombre es: ${num}, que te una cifra`;
+                    } else if (num.length == 2) {
+                        res = `El nombre es: ${num}, que te dues cifres`;
+                    }
+                } else {
+                    res = "Com a maxim tenen que se 2 cifres";
+                }
+
+
+
+                document.getElementById("resultat").innerHTML = res;
+            };
+            document.getElementById("boton5").onclick = function () {
+                let num1 = prompt("Introdueix el primer numero");
+                let num2 = prompt("Introdueix el segon numero");
+                let num3 = prompt("Introdueix el terce numero");
+
+                if (num1 == num3 || num1 == num2 || num2 == num3) {
+                    res = `Los tres nombres son iguals ${num1},${num2},${num3}`;
+                } else if (num1 > num3 && num1 > num2) {
+                    res = `El nombre mes gran es: ${num1}`;
+                } else if (num2 > num3) {
+                    res = `El nombre mes gran es: ${num2}`;
+                } else {
+                    res = `El nombre mes gran es: ${num3}`;
+                }
+
+                document.getElementById("resultat").innerHTML = res;
+            };
+            document.getElementById("boton6").onclick = function () {
+                let num = prompt("Introdueix un numero sencer");
+
+                if (isNaN(num)) {
+                    alert("Té que se un numero");
+                    return;
+                }
+                num = parseInt(num);
+
+                if (num > 0) {
+                    res = "El numero es positiu";
+                } else if (num == 0) {
+                    res = "El numero es cero";
+                } else if (num < 0) {
+                    res = "El numero es negatiu";
+                }
+                document.getElementById("resultat").innerHTML = res;
+            };
+            document.getElementById("boton7").onclick = function () {
+                let num = prompt("Introdueix un numero positiu de 3 xifres");
+
+                if (isNaN(num)) {
+                    alert("Té que se un numero");
+                    return;
+                }
+                if (parseInt(num) < 0) {
+                    alert("El numero no es positiu");
+                    return;
+                }
+                if (num === "") {
+                    alert("El numero no pot esta buit");
+                    return;
+                }
+
+                if (num.length > 3) {
+                    res = `El numero es mayor de 3 xifres ${num}`;
+                }
+
+                if (num.length == 3) {
+                    res = `El numero es de 3 xifres ${num}`;
+                }
+                else if (num.length < 3 && num.length > 1) {
+                    res = `El numero es de 2 xifres ${num}`;
+                } else {
+                    res = `El numero es de 1 xifra ${num}`;
+                }
+
+
+                document.getElementById("resultat").innerHTML = res;
+            };
+            document.getElementById("boton8").onclick = function () {
+                let nombre = prompt("Nom de la persona");
+                let numPreguntes = parseInt(prompt("Cuantas preguntas tenia la prova?"));
+                let numEncerts = parseInt(prompt("Cuantas preguntas son certes"));
+
+
+                let total = (numEncerts / numPreguntes) * 100;
+
+                let res;
+
+                if (total >= 90) {
+                    res = `${nombre}: Nivell Superior con un ${total}%`;
+                }
+                else if (total >= 75 && total < 90) {
+                    res = `${nombre}: Nivell mitjà con un ${total}%`;
+                }
+                else if (total >= 50 && total < 75) {
+                    res = `${nombre}: Nivell regular con un ${total}%`;
+                }
+                else if (total < 50) {
+                    res = `${nombre}: Fora de Nivell con un ${total}%`;
+                }
+
+                document.getElementById("resultat").innerHTML = res;
+            };
+        };
+    </script>
+</head>
+
+<body>
+    <input type="button" value="Exercici 1" id="boton1">
+    <input type="button" value="Exercici 2" id="boton2">
+    <input type="button" value="Exercici 3" id="boton3">
+    <input type="button" value="Exercici 4" id="boton4">
+    <input type="button" value="Exercici 5" id="boton5">
+    <input type="button" value="Exercici 6" id="boton6">
+    <input type="button" value="Exercici 7" id="boton7">
+    <input type="button" value="Exercici 8" id="boton8">
+    <div id="resultat"></div>
+</body>
+
+</html>

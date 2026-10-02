@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Exercici 2b</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+        window.onload = function () {
+            const nom = prompt("Escriu el teu nom: ");
+            const edat = prompt("Escriu la teva edat: ")
+
+            let res = '<p>Hola ' + nom + '.</p>';
+            res += '<p> Així que tens ' + edat + ' anys !!</p>';
+
+            document.getElementById("resultat").innerHTML = res;
+        };
+    </script>
+</head>
+
+<body>
+    <h1> Entrada de dades amb prompt()</h1>
+    <div id="resultat"></div>
+</body>
+
+</html>
