@@ -2,24 +2,30 @@
 <html>
 
 <head>
+    <title>Exercici</title>
     <meta charset="UTF-8">
     <script>
-
         window.onload = function () {
-            let resultat = document.getElementById("resultat");
-            document.getElementById("Boton1").onclick = function () {
+            document.getElementById('button').onclick = canviarText;
+            function canviarText() {
+                let nom = prompt("Introdueix el nom que vulgis")
 
+                document.getElementById('negreta').innerHTML = nom;
             }
         }
     </script>
 </head>
 
 <body>
-    <input id="Boton1" type="button" value="Boton 1" />
+    <h1>Canvi de text amb innerHTML</h1>
+    <p> Benvingut a la nostra web <strong id='negreta'>nom</strong> </p>
+    <input id='button' type='button' value='Canvia text' />
 
-
-
-    <div id="resultat"></div>
+    <div>
+        <p>La propietat <i>innerHTML</i> és una característica dels elements del DOM
+            (<i>Document Object Model</i>) que permet accedir o modificar el contingut HTML intern
+            d’un element d’una pàgina web.</p>
+    </div>
 </body>
 
 </html>

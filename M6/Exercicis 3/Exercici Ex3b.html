@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Exercici</title>
+    <meta charset="UTF-8">
+    <script>
+        window.onload = function () {
+            document.getElementById("Boton1").onclick = function () {
+                let paragraph = document.getElementsByTagName("p");
+                for (let p of paragraph) {
+                    if (p.id === "segon" || p.id === "quart") {
+                        p.style.color = "red";
+                    }
+                }
+            }
+            document.getElementById("Boton2").onclick = function () {
+                let paragraph = document.getElementsByClassName("lletraGran");
+                for (let p of paragraph) {
+                    p.textContent = p.textContent.toUpperCase();
+                }
+            }
+            document.getElementById("Boton3").onclick = function () {
+                let paragraph = document.getElementById("cinque");
+                paragraph.style.color = "green";
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <h1>Accés als elements de la pàgina</h1>
+    <p id="primer" class="lletraGran">primer paràgraf</p>
+    <p id="segon">segon paràgraf</p>
+    <p id="tercer" class="lletraGran">tercer paràgraf</p>
+    <p id="quart">quart paràgraf</p>
+    <p id="cinque">cinquè paràgraf</p>
+
+    <input type="button" id="Boton1" value="Boton1">
+    <input type="button" id="Boton2" value="Boton2">
+    <input type="button" id="Boton3" value="Boton3">
+</body>
+
+</html>
