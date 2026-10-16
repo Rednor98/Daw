@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="ca">
+
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width,initial-scale=1" />
+        <title>Exercicis divertits amb Math (JavaScript)</title>
+        <link rel="stylesheet" href="styles.css"/>
+        <script src="code.js"></script>
+    </head>
+
+    <body>
+        <header>
+            <h1>Exercicis amb <span class="kbd">Math</span> (JavaScript)</h1>
+            <p>Practica <span class="kbd">random()</span>, <span class="kbd">round()</span>, <span class="kbd">pow()</span>,
+                <span class="kbd">sqrt()</span>, <span class="kbd">min()</span> i <span class="kbd">max()</span> amb
+                mini-reptes!
+            </p>
+        </header>
+
+        <section class="wrap">
+
+            <!-- 1) Dau 1..6 -->
+            <article class="card" id="ex1">
+                <h2>1) Dau (1–6)</h2>
+                <p class="desc">Cada clic genera un número aleatori de l’1 al 6 amb la mateixa probabilitat.</p>
+                <div class="row">
+                    <button id="btnDice">Llença el dau</button>
+                    <div class="out"><span class="big" id="diceOut"></span></div>
+                </div>
+                <small class="hint">Ús de <span class="kbd">Math.floor()</span> i <span class="kbd">Math.random()</span></small>
+            </article>
+
+            <!-- 2) Cara o Creu -->
+            <article class="card" id="ex2">
+                <h2>2) Cara o creu</h2>
+                <p class="desc">Simula un llançament de moneda (50/50).</p>
+                <div class="row">
+                    <button class="secondary" id="btnCoin">Llença la moneda</button>
+                    <div class="out"><span class="big" id="coinOut"></span></div>
+                </div>
+                <small class="hint">Ús de <span class="kbd">Math.floor()</span> i <span class="kbd">Math.random()</span></small>
+            </article>
+
+            <!-- 3) Potències i Arrels -->
+            <article class="card" id="ex4">
+                <h2>3) Potències i arrels</h2>
+                <p class="desc">Calcula <span class="kbd">base<sup>exponent</sup></span> i l’arrel quadrada d’un nombre.</p>
+                <div class="row">
+                    <input type="number" id="powBase" placeholder="Base" />
+                    <input type="number" id="powExp" placeholder="Exponent" />
+                    <button id="btnPow">Calcula potència</button>
+                </div>
+                <div class="out" id="powOut"></div>
+                <div class="row" style="margin-top:6px">
+                    <input type="number" id="sqrtNum" placeholder="Nombre per √" />
+                    <button class="secondary" id="btnSqrt">Calcula arrel</button>
+                </div>
+                <div class="out" id="sqrtOut"></div>
+                <small class="hint">Ús de <span class="kbd">Math.pow()</span> i <span
+                        class="kbd">Math.sqrt()</span>.</small>
+            </article>
+
+            <!-- 4) Mínim i Màxim -->
+            <article class="card" id="ex5">
+                <h2>4) Mínim i màxim</h2>
+                <p class="desc">Introdueix 3 valors i obtén el menor i el més gran.</p>
+                <div class="row">
+                    <input type="number" id="minmaxA" placeholder="A" />
+                    <input type="number" id="minmaxB" placeholder="B" />
+                    <input type="number" id="minmaxC" placeholder="C" />
+                    <button id="btnMinMax">Calcula</button>
+                </div>
+                <div class="out" id="minmaxOut"></div>
+                <small class="hint">Ús de <span class="kbd">Math.min()</span> i <span class="kbd">Math.max()</span>.</small>
+            </article>
+
+        </section>
+
+        <footer>
+            JavaScript️ i <span class="kbd">Math</span>
+        </footer>
+    </body>
+
+</html>

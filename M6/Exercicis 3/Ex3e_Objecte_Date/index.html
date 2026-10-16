@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ca">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Pràctiques de l'objecte Date (JS pur)</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="code.js"></script>
+</head>
+
+<body>
+    <header>
+        <h1>Exercicis de l'objecte <code>Date</code></h1>
+    </header>
+
+    <main>
+        <!-- EX1: Validació de data (exercici inicial) -->
+        <section id="ex1">
+            <h2>1) Validació de data (DD/MM/AAAA)</h2>
+            <p class="muted">En fer clic, es valida la data en format <strong>DD/MM/AAAA</strong>. Si és correcta:
+                <em>"Data correcta"</em>, si no: <em>"Data incorrecta"</em>.
+            </p>
+            <div class="row">
+                <label for="ex1_data">Data (DD/MM/AAAA):</label>
+                <input id="ex1_data" type="text" placeholder="13/10/2025" />
+                <button id="ex1_btn">Validar</button>
+            </div>
+        </section>
+
+        <!-- EX2: Mostrar la data actual -->
+        <section id="ex2">
+            <h2>2) Mostrar la data actual (DD/MM/AAAA)</h2>
+            <div class="row">
+                <button id="ex2_btn">Mostra la data d'avui</button>
+            </div>
+            <div id="ex2_out" class="out"></div>
+        </section>
+
+        <!-- EX3: Diferència entre dues dates (dies) -->
+        <section id="ex3">
+            <h2>3) Diferència de dies entre dues dates</h2>
+            <div class="row">
+                <label for="ex3_a">Data A:</label>
+                <input id="ex3_a" type="date" />
+                <label for="ex3_b">Data B:</label>
+                <input id="ex3_b" type="date" />
+                <button id="ex3_btn">Calcula diferència</button>
+            </div>
+            <div id="ex3_out" class="out"></div>
+        </section>
+
+        <!-- EX4: Dia de la setmana -->
+        <section id="ex4">
+            <h2>4) Mostrar el dia de la setmana d'una data</h2>
+            <div class="row">
+                <label for="ex4_data">Data:</label>
+                <input id="ex4_data" type="date" />
+                <button id="ex4_btn">Quin dia és?</button>
+            </div>
+            <div id="ex4_out" class="out"></div>
+        </section>
+
+        <!-- EX5: Passat / Avui / Futur -->
+        <section id="ex5">
+            <h2>5) És passat, avui o futur?</h2>
+            <div class="row">
+                <label for="ex5_data">Data:</label>
+                <input id="ex5_data" type="date" />
+                <button id="ex5_btn">Comprova</button>
+            </div>
+            <div id="ex5_out" class="out"></div>
+        </section>
+
+        <!-- EX6: Hora actual 24h o 12h -->
+        <section id="ex6">
+            <h2>6) Hora actual en format 24h o 12h</h2>
+            <div class="row">
+                <label for="ex6_format">Format:</label>
+                <select id="ex6_format">
+                    <option value="24">24 hores</option>
+                    <option value="12">12 hores (AM/PM)</option>
+                </select>
+                <button id="ex6_btn">Mostra l'hora ara</button>
+            </div>
+            <div id="ex6_out" class="out big"></div>
+        </section>
+
+        <!-- EX7: Any de traspàs -->
+        <section id="ex7">
+            <h2>7) Comprovar si un any és de traspàs</h2>
+            <div class="row">
+                <label for="ex7_any">Any:</label>
+                <input id="ex7_any" type="number" placeholder="2028" />
+                <button id="ex7_btn">Comprova</button>
+            </div>
+            <div id="ex7_out" class="out"></div>
+        </section>
+
+        <!-- EX8: Comptador fins a Cap d'Any -->
+        <section id="ex8">
+            <h2>8) Comptador fins a Cap d'Any</h2>
+            <p class="muted">Mostra en temps real quants <strong>dies, hores, minuts i segons</strong> falten per
+                arribar a l'1 de gener del proper any.</p>
+            <div id="ex8_out" class="out big"></div>
+        </section>
+    </main>
+</body>
+
+</html>
