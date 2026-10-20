@@ -23,34 +23,36 @@
                 let num1 = parseInt(prompt("Introduce un valor"));
                 let num2 = parseInt(prompt("Introduce un valor"));
                 let num3 = parseInt(prompt("Introduce un valor"));
-                
-                if(num1 < 10 && num2 < 10 && num3 < 10 ){
+
+                if (num1 < 10 && num2 < 10 && num3 < 10) {
                     resultat.innerHTML = "Tots el números són menors a deu";
+                } else {
+                    resultat.innerHTML = ""
                 }
             }
-            document.getElementById("Boton3").onclick = function(){
+            document.getElementById("Boton3").onclick = function () {
                 let sou = parseFloat(prompt("Introdueix el teu sou"));
                 let antiguitat = parseInt(prompt("Introdueix la teva antiguitat en la empresa"));
 
-                if(sou < 1000 && antiguitat >= 10){
+                if (sou < 1000 && antiguitat >= 10) {
                     resultat.innerHTML = `El teu sou es: ${sou * 1.20}`;
-                }else if(sou < 1000 && antiguitat < 10){
-                     resultat.innerHTML = `El teu sou es: ${sou * 1.02}`;
-                }else if(sou >= 1000){
-                     resultat.innerHTML = `El teu sou es: ${sou}`;
+                } else if (sou < 1000 && antiguitat < 10) {
+                    resultat.innerHTML = `El teu sou es: ${sou * 1.02}`;
+                } else if (sou >= 1000) {
+                    resultat.innerHTML = `El teu sou es: ${sou}`;
                 }
             }
-            document.getElementById("Boton4").onclick = function(){
+            document.getElementById("Boton4").onclick = function () {
                 let resp = prompt("Per fe el descompte al preu tens que ser sincer, ets (estudiant o menor)? ");
 
-                if(resp !== "estudiant" && resp !== "menor"){
+                if (resp !== "estudiant" && resp !== "menor") {
                     alert("Ten que especifica si (estudiant o menor)!!");
                     return;
                 }
 
-                if(resp == "estudiant"){
+                if (resp == "estudiant") {
                     resultat.innerHTML = "No aplicar descompte";
-                }else if(resp == "menor"){
+                } else if (resp == "menor") {
                     resultat.innerHTML = "Aplicar descompte";
                 }
             }

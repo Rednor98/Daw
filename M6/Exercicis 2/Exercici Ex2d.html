@@ -40,11 +40,12 @@
                 document.getElementById("resultat").innerHTML = res;
             };
             document.getElementById("boton3").onclick = function () {
-                let num1 = prompt("Introdueix el primer nombre");
-                let num2 = prompt("Introdueix el segon nombre");
+                let num1 = parseInt(prompt("Introdueix el primer nombre"));
+                let num2 = parseInt(prompt("Introdueix el segon nombre"));
 
                 if (num1 > num2) {
-                    res = "La suma es: " + (parseInt(num1) + parseInt(num2));
+                    res = "La suma es: " + (num1 + num2);
+                    res += "La resa es: " + (num1 - num2);
                 } else {
                     res = "El producte es:" + num1 * num2;
                 }
@@ -68,11 +69,11 @@
                 document.getElementById("resultat").innerHTML = res;
             };
             document.getElementById("boton5").onclick = function () {
-                let num1 = prompt("Introdueix el primer numero");
-                let num2 = prompt("Introdueix el segon numero");
-                let num3 = prompt("Introdueix el terce numero");
+                let num1 = parseInt(prompt("Introdueix el primer numero"));
+                let num2 = parseInt(prompt("Introdueix el segon numero"));
+                let num3 = parseInt(prompt("Introdueix el terce numero"));
 
-                if (num1 == num3 || num1 == num2 || num2 == num3) {
+                if (num1 == num3 && num1 == num2 && num2 == num3) {
                     res = `Los tres nombres son iguals ${num1},${num2},${num3}`;
                 } else if (num1 > num3 && num1 > num2) {
                     res = `El nombre mes gran es: ${num1}`;
@@ -121,13 +122,12 @@
                 if (num.length > 3) {
                     res = `El numero es mayor de 3 xifres ${num}`;
                 }
-
-                if (num.length == 3) {
+                else if (num.length == 3) {
                     res = `El numero es de 3 xifres ${num}`;
                 }
                 else if (num.length < 3 && num.length > 1) {
                     res = `El numero es de 2 xifres ${num}`;
-                } else {
+                } else if (num.length < 2 && num.length > 0) {
                     res = `El numero es de 1 xifra ${num}`;
                 }
 

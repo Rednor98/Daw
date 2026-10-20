@@ -20,7 +20,6 @@ window.onload = function () {
         }
 
         let dateFormat = new Date();
-        dateFormat.
 
 
     }

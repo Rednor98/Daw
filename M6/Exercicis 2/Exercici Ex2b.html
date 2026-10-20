@@ -7,19 +7,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script>
         window.onload = function () {
-            const nom = prompt("Escriu el teu nom: ");
-            const edat = prompt("Escriu la teva edat: ")
 
-            let res = '<p>Hola ' + nom + '.</p>';
-            res += '<p> Així que tens ' + edat + ' anys !!</p>';
+            document.getElementById("boton1").onclick = function () {
+                const nom = prompt("Escriu el teu nom: ");
+                const edat = prompt("Escriu la teva edat: ");
 
-            document.getElementById("resultat").innerHTML = res;
+                let res = '<p>Hola ' + nom + '.</p>';
+                res += '<p> Així que tens ' + edat + ' anys !!</p>';
+
+                document.getElementById("resultat").innerHTML = res;
+            }
+
         };
     </script>
 </head>
 
 <body>
     <h1> Entrada de dades amb prompt()</h1>
+    <input type="button" value="Boton" id="boton1">
     <div id="resultat"></div>
 </body>
 
