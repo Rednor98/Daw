@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <script>
+
+        window.onload = function () {
+            let resultat = document.getElementById("resultat");
+            document.getElementById("Boton1").onclick = function () {
+                let incremental = 0;
+                let res = "";
+                let num = 0;
+
+                while (incremental != 25) {
+                    num = num + 11;
+                    res += num + "-"
+                    incremental++;
+                }
+                resultat.innerHTML = res;
+            }
+
+            document.getElementById("Boton2").onclick = function () {
+                let incremental = 1;
+                let res = "";
+                let ope = 0;
+
+                while (incremental != 100) {
+                    if (ope >= 500) {
+                        break;
+                    } else {
+                        ope = 0;
+                    }
+                    ope = 8 * incremental;
+                    res += ope + "-"
+                    incremental++;
+                }
+                resultat.innerHTML = res;
+            }
+            document.getElementById("Boton3").onclick = function () {
+                let incremental = 0;
+                let media = 0;
+                while (incremental != 5) {
+                    let res = parseInt(prompt("Introduce una altura"));
+                    media += res;
+                    incremental++;
+                }
+
+                media = media / incremental;
+
+                resultat.innerHTML = `La media de altura i es: ${media} cm.`;
+            }
+            document.getElementById("Boton4").onclick = function () {
+                let valor = 0;
+                let res = 0;
+
+                do {
+                    valor = parseInt(prompt("Introdueix un numero que estigui entre 1-9999; (Valor 9999 pero sorti)"))
+                    if (valor != 9999) {
+                        res = res + valor;
+                    }
+                } while (valor != 9999);
+                if (valor < 0) {
+                    resultat.innerHTML = `El resultat es menor a 0: ${res}`;
+                } else if (valor > 0) {
+                    resultat.innerHTML = `El resultat es mayor a 0: ${res}`;
+                } else {
+                    resultat.innerHTML = `El resultat es igual a 0: ${res}`;
+                }
+
+            }
+            document.getElementById("Boton5").onclick = function () {
+                let randomNum = Math.floor(Math.random() * 10) + 1;
+
+                let valor = 0;
+
+                do {
+                    valor = parseInt(prompt("Introdueix un numero del 1 al 10"));
+
+                    if (randomNum != valor) {
+                        resultat.innerHTML = "Incorrecte, torna-ho a provar.";
+                    }
+
+                } while (randomNum != valor);
+                resultat.innerHTML = "Enhorabona! Has encertat el número.";
+            }
+            document.getElementById("Boton6").onclick = function () {
+                let nums = [];
+                let res = 0
+                for (let i = 0; i <= 10; i++) {
+                    nums.push(parseInt(prompt("Introdueix un num")));
+                }
+                for (const num of nums) {
+                    if (num >= 5) {
+                        res = res + num;
+                    }
+                }
+                resultat.innerHTML = res;
+            }
+            document.getElementById("Boton7").onclick = function () {
+                let valor = parseInt(prompt("Introdueix un num per veure la tabla de multiplicar!"));
+                let formula = "";
+                let arrayTabla = []
+
+                let res = 0;
+                for (let i = 0; i <= 10; i++) {
+                    res = valor * i;
+                    formula = `${valor} X ${i} = ${res}`;
+                    arrayTabla.push(formula);
+                }
+                let tableHTML = '<table border="1">';
+                for (const item of arrayTabla) {
+                    tableHTML += '<tr>';
+                    tableHTML += `<td>${item}</td>`;
+                    tableHTML += '</tr>'
+                }
+                tableHTML += '</table>';
+                resultat.innerHTML = tableHTML;
+            }
+            document.getElementById("Boton8").onclick = function () {
+                let nums = [];
+                let quantitatNegatius = 0;
+                let quantitatPositius = 0;
+                let quantitatZeros = 0;
+                let quantitatParells = 0;
+                let quantitatImparells = 0;
+                let sumaParells = 0;
+                let res = "";
+
+                for (let i = 0; i < 6; i++) {
+                    nums.push(parseInt(prompt("Introdueix un num")));
+                }
+                for (const num of nums) {
+                    if (num < 0) {
+                        quantitatNegatius++;
+                    } else if (num > 0) {
+                        quantitatPositius++;
+                    } else {
+                        quantitatZeros++;
+                    }
+                    if (num % 2 == 0) {
+                        quantitatParells++;
+                        sumaParells = sumaParells + num;
+                    }
+                    if (num % 2 != 0) {
+                        quantitatImparells++;
+                    }
+                }
+                res = `<p>La quantitat de negatius son: ${quantitatNegatius}</p>`;
+                res += `<p>La quantitat de positius son: ${quantitatPositius}</p>`;
+                res += `<p>La quantitat de zeros son: ${quantitatZeros}</p>`;
+                res += `<p>La quantitat de parells son: ${quantitatParells}</p>`;
+                res += `<p>La quantitat de imparells son: ${quantitatImparells}</p>`;
+                res += `<p>La suma de tots el parells es: ${sumaParells}</p>`;
+                resultat.innerHTML = res;
+            }
+        }
+
+    </script>
+</head>
+
+<body>
+    <input id="Boton1" type="button" value="Boton 1" />
+    <input id="Boton2" type="button" value="Boton 2" />
+    <input id="Boton3" type="button" value="Boton 3" />
+    <input id="Boton4" type="button" value="Boton 4" />
+    <input id="Boton5" type="button" value="Boton 5" />
+    <input id="Boton6" type="button" value="Boton 6" />
+    <input id="Boton7" type="button" value="Boton 7" />
+    <input id="Boton8" type="button" value="Boton 8" />
+    <div id="resultat"></div>
+</body>
+
+</html>

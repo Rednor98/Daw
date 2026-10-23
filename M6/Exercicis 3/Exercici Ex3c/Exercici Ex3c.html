@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ca">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Objecte String JS</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script>
+        window.onload = function () {
+
+            let resultat = document.getElementById("resultat");
+            let string = "";
+
+            document.getElementById("boto1").onclick = function () {
+                string = prompt("Introdueix una frase!!");
+
+                if (checkString(string)) {
+
+
+
+                    let res = "";
+
+                    res = `<p>Frase original: ${string} </p>`;
+                    res += `<p>Quantitat de caràcters: ${string.length} </p>`;
+                    res += `<p>Frase en mayuscula i minuscula: ${string.toUpperCase()} | ${string.toLowerCase()} </p>`;
+                    res += `<p>Mostrar la primera posicio i la ultima de la frase: ${string.substring(0, 1)} | ${string.substring(string.length - 1)} </p>`
+
+                    let countCharacters = 0;
+                    let i = 0;
+                    for (char of string) {
+                        if (char == "A" || char == "a") {
+                            countCharacters++;
+                        }
+                    }
+
+                    res += `<p>Quantitat de A/a en la paraula ${countCharacters} </p>`;
+
+                    res += `<p>Mostra els 5 primers caracters de la frase i els 5 ultims: ${string.substring(0, 4)} | ${string.substring(string.length - 5, string.length)}  </p>`;
+
+                    resultat.innerHTML = res;
+                }
+
+
+            };
+
+            document.getElementById("boto2").onclick = function () {
+                let str = prompt("Introdueix la paraula que vols busca");
+                if (string.includes(str)) {
+                    resultat.innerHTML += "<p>Si que esta la paraula</p>";
+                } else {
+                    resultat.innerHTML += "<p>No esta la paraula</p>";
+                }
+            }
+
+            document.getElementById("boto3").onclick = function () {
+                let word = prompt("Introdueix una palabra de la frase");
+                let chanceWord = prompt("Introdueix la paraula nova");
+
+                let result = string.replace(word, chanceWord);
+                resultat.innerHTML += result;
+            };
+
+            function checkString(string) {
+
+
+                if (string != "") {
+                    document.getElementById("boto2").disabled = false;
+                    document.getElementById("boto3").disabled = false;
+                    return true;
+                } else {
+                    alert("Tens que introdui una frase");
+                    return false;;
+                }
+            }
+        };
+    </script>
+</head>
+
+<body>
+    <main class="container">
+        <h1>String (JavaScript)</h1>
+        <p class="subtitle">Pràctica d’operacions bàsiques amb l’objecte <code>String</code>.</p>
+
+        <div class="bar">
+            <button id="boto1">Introduïr una frase</button>
+            <button id="boto2" disabled>Cercar paraula</button>
+            <button id="boto3" disabled>Substituir paraula</button>
+        </div>
+
+        <section class="card" id="resultat">
+            <p class="empty">Aquí apareixeran els resultats…</p>
+        </section>
+    </main>
+</body>
+
+</html>
