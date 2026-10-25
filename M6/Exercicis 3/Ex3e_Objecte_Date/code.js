@@ -15,7 +15,7 @@ window.onload = function () {
     function ex1_validarData() {
         let date = document.getElementById("ex1_data").value;
         if (!date) {
-            alert("Data incorrecta");
+            alert("Informa una data en format DD/MM/AAAA");
             return;
         }
 
@@ -50,11 +50,21 @@ window.onload = function () {
     function ex3_diferencia() {
         let date1 = new Date(document.getElementById("ex3_a").value);
         let date2 = new Date(document.getElementById("ex3_b").value);
+        let result = document.getElementById("ex3_out");
 
-        let diferencia = Math.abs(date2 - date1);
-        let dias = diferencia / (1000 * 60 * 60 * 24);
+        if (date1 > date2) {
+            result.innerHTML = "La data A ha de ser menor a la data B";
+        }
+        if (date1.value && date2.value) {
+            let diferencia = Math.abs(date2 - date1);
+            let dias = diferencia / (1000 * 60 * 60 * 24);
 
-        document.getElementById("ex3_out").innerHTML = dias;
+            result.innerHTML = dias;
+        } else {
+            result.innerHTML = "Si us plau, informa les dues dates";
+        }
+
+
     }
 
     // =============================
@@ -63,9 +73,13 @@ window.onload = function () {
     function ex4_diaSetmana() {
         let date = new Date(document.getElementById("ex4_data").value);
         let array = ["Domingo", "Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado"];
+        let result = document.getElementById("ex4_out");
 
-        document.getElementById("ex4_out").innerHTML = array[date.getDay()];
-
+        if (!date.value) {
+            result.innerHTML = "Introdueix una data correcta.";
+        } else {
+            result.innerHTML = array[date.getDay()];
+        }
     }
 
     // =============================
@@ -76,11 +90,13 @@ window.onload = function () {
         let dateActual = new Date();
         let result = document.getElementById("ex5_out");
 
-        console.log(date);
-        console.log(dateActual);
+
         date.setHours(0, 0, 0, 0);
         dateActual.setHours(0, 0, 0, 0)
-        if (date > dateActual) {
+        if (!date.value) {
+            result.innerHTML = "Introdueix una data correcta";
+        }
+        else if (date > dateActual) {
             result.innerHTML = "Futur";
         } else if (date < dateActual) {
             result.innerHTML = "Pasat";
@@ -97,32 +113,65 @@ window.onload = function () {
         let result = document.getElementById("ex6_out");
         let format = document.getElementById("ex6_format").value;
 
-        console.log(format)
+        let h24 = date.getHours();
+        let minuts = date.getMinutes().toString().padStart(2, "0");
+        let hores;
 
-        console.log(date.getHours());
-        result.innerHTML = date.getHours();
+        if (format == 12) {
+            let h12 = h24 % 12;
 
+            if (h12 === 0) {
+                h12 = 12;
+            }
 
+            let ampm = h24 < 12 ? "AM" : "PM";
+            hores = h12;
 
+            result.innerHTML = hores + ":" + minuts + " " + ampm;
+        } else {
+            hores = h24.toString().padStart(2, "0");
+            result.innerHTML = hores + ":" + minuts;
+        }
     }
 
     // =============================
     // EX7: Any de traspàs
     // =============================
     function ex7_comprovarTraspas() {
+        let date = document.getElementById("ex7_any").value;
 
+        if (!date || Number.isNaN(Number(date))) {
+            alert("Introdueix un any vàlid");
+            return;
+        }
 
+        let any = Number(date);
 
-
-
-
-
+        if (any % 4 === 0) {
+            alert("És un any de traspàs");
+        } else {
+            alert("No és un any de traspàs");
+        }
     }
 
     // =============================
     // EX8: Comptador fins a Cap d'Any
     // =============================
+    function ex8_ComptadorFinsAnyNou() {
+        const countDownDate = new Date("Jan 1, 2027 00:00:00").getTime();
 
+        let date = new Date();
+        let result = document.getElementById("ex8_out");
+        let timeLeft = countDownDate - date;
+
+        const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+        result.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+    }
+    setInterval(ex8_ComptadorFinsAnyNou, 1000);
 
 
 };
