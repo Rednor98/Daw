@@ -7,7 +7,8 @@
 <body>
 	<div class="container my-4">
 		<jsp:include page="sections/header.jsp" />
-		TODO - Register view
+		<h1>New  register</h1>
+		
 	</div>
 </body>
 </html>
