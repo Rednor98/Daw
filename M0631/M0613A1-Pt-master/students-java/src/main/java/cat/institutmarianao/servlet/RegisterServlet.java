@@ -58,7 +58,7 @@ public class RegisterServlet extends HttpServlet {
 			String surname = request.getParameter("surname");
 			String email = request.getParameter("email");
 			List<Module> module = new ArrayList<Module>();
-			module.addAll(request.getParameterValues("module"));
+			// module.addAll(request.getParameterValues("module"));
 
 			student.setDni(dni);
 			student.setName(name);
