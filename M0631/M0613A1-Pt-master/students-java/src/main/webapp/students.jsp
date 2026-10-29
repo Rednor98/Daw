@@ -29,6 +29,7 @@
 			</tr>
 			<c:forEach var="student" items="${students}">
 				<tr>
+					<td>${students.dni }</td>
 					<td>${students.name}</td>
 					<td>${students.surname}</td>
 					<td>${students.email}</td>

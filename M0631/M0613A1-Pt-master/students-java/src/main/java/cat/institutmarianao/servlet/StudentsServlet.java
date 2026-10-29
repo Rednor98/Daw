@@ -1,8 +1,9 @@
 package cat.institutmarianao.servlet;
 
 import java.io.IOException;
-import java.util.List;
 
+import cat.institutmarianao.dao.CycleDao;
+import cat.institutmarianao.dao.StudentDao;
 import jakarta.ejb.EJB;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
@@ -10,10 +11,6 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import cat.institutmarianao.dao.CycleDao;
-import cat.institutmarianao.dao.StudentDao;
-import cat.institutmarianao.model.Cycle;
-import cat.institutmarianao.model.Student;
 
 //TODO Implement the servlet to handle student listing
 
@@ -30,12 +27,11 @@ public class StudentsServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		try {
-			List<Cycle> cycles = cycleDao.findAll();
-			List<Student> students = studentDao.findAll();
+
 
 			RequestDispatcher dispatcher = request.getRequestDispatcher("students.jsp");
-			request.setAttribute("cycles", cycles);
-			request.setAttribute("students", students);
+			request.setAttribute("cycles", cycleDao.findAll());
+			request.setAttribute("students", studentDao.findAll());
 			dispatcher.forward(request, response);
 		} catch (Exception e) {
 			e.printStackTrace();

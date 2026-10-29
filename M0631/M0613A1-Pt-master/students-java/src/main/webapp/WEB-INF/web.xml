@@ -6,7 +6,7 @@
 
 	<!-- TODO Change welcome-file to the appropiate resource -->
 	<welcome-file-list>
-		<welcome-file>students.jsp</welcome-file>
+		<welcome-file>students</welcome-file>
 	</welcome-file-list>
 
 	<!-- TODO Configure basic authentication and authorization -->

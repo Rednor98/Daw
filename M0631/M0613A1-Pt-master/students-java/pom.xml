@@ -29,7 +29,6 @@
 			<groupId>cat.institutmarianao</groupId>
 			<artifactId>students-dao-service</artifactId>
 			<version>26.27</version>
-			<type>jar</type>
 		</dependency>
 
 		<!-- Jakarta EE API -->
