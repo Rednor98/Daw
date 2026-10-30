@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Exercici cookies</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .form-row {
+            margin: 15px;
+        }
+
+        #customColor {
+            display: none;
+        }
+    </style>
+    <script>
+        var nom = "";
+        var color = "";
+        window.onload = function () {
+            document.getElementById("boto1").addEventListener("click", login);
+            document.getElementById("boto2").addEventListener("click", personalitza);
+
+            nom = getCookie("nom");
+            if (nom !== "") {
+                document.getElementById("missatges").innerHTML = "<h2>Hola " + nom + ", Benvingut!!</h2>";
+            }
+            color = getCookie("color");
+            if (color !== "") {
+                canviaColor(color);
+            }
+
+            function login() {
+
+
+
+                nom = document.getElementById("nom").value;
+                document.getElementById("customColor").style.display = "block";
+                document.getElementById("missatges").innerHTML = "<h2>Hola " + nom + ", Benvingut!!</h2>";
+                let cookieNom = getCookie("nom");
+                document.cookie = `nom= ${nom}; expires=Thu, 18 Dec 2030 00:00:00 UTC`;
+
+
+            }
+
+            function personalitza() {
+                var sel = document.getElementById("colorFons");
+                var inx = sel.selectedIndex;
+                color = sel[inx].value;
+                canviaColor(color);
+                document.cookie = `color= ${color}; expires=Thu, 18 Dec 2030 00:00:00 UTC`;
+            }
+
+            function canviaColor(color) {
+                switch (color) {
+                    case "vermell":
+                        document.body.style.backgroundColor = "red";
+                        break;
+                    case "groc":
+                        document.body.style.backgroundColor = "yellow";
+                        break;
+                    case "blau":
+                        document.body.style.backgroundColor = "blue";
+                        break;
+                    default:
+                        break;
+                }
+            }
+            function getCookie(cname) {
+                var name = cname + "=";
+                var arrayCookies = document.cookie.split(';');
+                for (var i = 0; i < arrayCookies.length; i++) {
+                    var oneCookie = arrayCookies[i];
+                    while (oneCookie.charAt(0) == ' ') {
+                        oneCookie = oneCookie.substring(1);
+                    }
+                    if (oneCookie.indexOf(name) == 0) {
+                        return oneCookie.substring(name.length, oneCookie.length);
+                    }
+                }
+                return "";
+            }
+        };
+    </script>
+</head>
+
+<body>
+    <h1>Exercici cookies</h1>
+    <div id="container">
+        <p style="margin: 15px;">Introdueix el teu nom:</p>
+        <div class="form-row"><label for="nom">Nom: </label><input type="text" id="nom"></div>
+        <div class="form-row"><input type="button" value="login" id="boto1"></div>
+        <div id="missatges"></div>
+        <div id="customColor">
+            <div class="form-row">
+                <label for="colorFons">Personalitza el color de Fons de la pàgina:</label>
+                <select name="colorFons" id="colorFons">
+                    <option selected disabled hidden>&nbsp;</option>
+                    <option value="vermell">vermell</option>
+                    <option value="groc">groc</option>
+                    <option value="blau">blau</option>
+                </select>
+            </div>
+            <div class="form-row"><input type="button" value="personalitza" id="boto2"></div>
+        </div>
+    </div>
+</body>
+
+</html>

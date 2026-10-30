@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="styles.css" />
+    <script>
+
+        window.onload = function () {
+            let resultat = document.getElementById("resultat");
+            document.getElementById("Boton1").onclick = function () {
+                let date = document.getElementById("date");
+                let alçada = parseFloat(document.getElementById("alçada"));
+                let pes = parseInt(document.getElementById("pes"));
+                let sexe = document.getElementById("sexe");
+
+                if (!validatFormat(date)) {
+
+                }
+            }
+        }
+        function validatFormat(data) {
+            let regex = /^\d{2}\/\d{2}\/\d{4}$/;
+            return regex.test(data);
+        }
+    </script>
+</head>
+
+<body>
+
+
+    <section id="ex1">
+        <h2>Datos personales</h2>
+        <div class="row">
+            <p>
+                <label for="date">Data (DD/MM/AAAA):</label>
+                <input id="date" type="text" placeholder="13/10/2025" required />
+            </p>
+        </div>
+        <div class="row">
+            <p>
+                <label for="alçada">Alçada (cm):</label>
+                <input id="alçada" type="text" placeholder="1,70" required />
+            </p>
+        </div>
+        <div>
+            <p>
+                <label for="pes">Pes (kg):</label>
+                <input id="pes" type="text" placeholder="80 kg" required />
+            </p>
+        </div>
+        <div>
+            <p>
+                <label for="sexe">Sexe (H/D):</label>
+                <input id="sexe" type="text" placeholder="H" required />
+            </p>
+        </div>
+        <input id="Boton1" type="button" value="Boton 1" />
+    </section>
+
+    <div id="resultat"></div>
+</body>
+
+</html>
