@@ -21,24 +21,24 @@
 				<div class="row">
 					<div class="col-sm">
 						<p>
-						<label for="dni">DNI:</label> <input type="text" id="dni"
+						<label for="dni">DNI:</label> <input type="text" id="dni" name="dni"
 							placeholder="Dni" value="${sessionScope.student.dni }" />
 						</p>
 						<p>
-						<label for="name">Name:</label> <input type="text" id="name"
+						<label for="name">Name:</label> <input type="text" name="name" id="name"
 							placeholder="Name" value="${sessionScope.student.name }" />
 						</p>
 						<p>
 						<label for="surname">Surname:</label> <input type="text"
-							id="surname" placeholder="Surname" value="${sessionScope.student.surname }" />
+							id="surname" name="surname"placeholder="Surname" value="${sessionScope.student.surname }" />
 						</p>
 						<p>
 						<label for="email">Email:</label> 
-						<input type="text" id="email" placeholder="Email" value="${sessionScope.student.email }" />
+						<input type="text" name="email" id="email" placeholder="Email" value="${sessionScope.student.email }" />
 						</p>
-
-						<a href="students" class="btn btn-secondary">Cancel</a> <a
-							href="students" class="btn btn-primary">Submit</a>
+						
+						<a href="students" class="btn btn-secondary">Cancel</a>
+						<button type="submit" class="btn btn-primary">Submit</button>
 					</div>
 
 					<div class="col-sm">
@@ -46,9 +46,10 @@
 						<div>
 							<c:forEach var="module" items="${modules}">
 								<p>
-									<input type="checkbox" name="modules"> ${module.name }
+									<input type="checkbox" name="moduleCode" value="${module.code}"> ${module.name }
 								</p>
 							</c:forEach>
+							<input type="hidden" name="cycle" value="${cycle}">
 						</div>
 
 					</div>

@@ -14,7 +14,7 @@ import jakarta.servlet.http.HttpServletResponse;
 
 //TODO Implement the servlet to handle student listing
 
-@WebServlet("/students")
+@WebServlet(urlPatterns = { "/students" })
 public class StudentsServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;

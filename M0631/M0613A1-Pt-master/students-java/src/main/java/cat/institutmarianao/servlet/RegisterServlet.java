@@ -20,7 +20,7 @@ import jakarta.validation.ConstraintViolation;
 import jakarta.validation.Validator;
 
 //TODO Implement the servlet to handle student registration, including form validation
-@WebServlet("/register")
+@WebServlet(urlPatterns = { "/register" })
 public class RegisterServlet extends HttpServlet {
 
 	@Resource
@@ -29,7 +29,6 @@ public class RegisterServlet extends HttpServlet {
 	private ModuleDao moduleDao;
 	@EJB
 	private StudentDao studentDao;
-
 
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -57,27 +56,40 @@ public class RegisterServlet extends HttpServlet {
 			String name = request.getParameter("name");
 			String surname = request.getParameter("surname");
 			String email = request.getParameter("email");
-			List<Module> module = new ArrayList<Module>();
-			// module.addAll(request.getParameterValues("module"));
+
+			List<String> modulesCodes = new ArrayList<String>();
+			for (String mCode : request.getParameterValues("moduleCode")) {
+				modulesCodes.add(mCode);
+			}
+			List<Module> lsModules = new ArrayList<Module>();
+
+			for (String mo : modulesCodes) {
+				Module newModule = moduleDao.findByPk(mo, request.getParameter("cycle"));
+
+				lsModules.add(newModule);
+			}
 
 			student.setDni(dni);
 			student.setName(name);
 			student.setSurname(surname);
 			student.setEmail(email);
-			student.setModules(module);
+			student.setModules(lsModules);
+
 
 			errors.addAll(validator.validate(student));
 
 			RequestDispatcher dispatcher;
 			if (errors.isEmpty()) {
+
 				dispatcher = request.getRequestDispatcher("student.jsp");
 			} else {
 				dispatcher = request.getRequestDispatcher("register.jsp");
 				request.setAttribute("errors", errors);
 			}
-
 			request.setAttribute("student", student);
+			request.getSession().removeAttribute("student");
 			
+
 			dispatcher.forward(request, response);
 		} catch (Exception e) {
 			throw new IllegalArgumentException("Error al procesar los datos del formulario de registro", e);
