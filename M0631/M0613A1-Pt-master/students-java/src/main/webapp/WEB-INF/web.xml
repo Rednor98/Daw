@@ -10,4 +10,30 @@
 	</welcome-file-list>
 
 	<!-- TODO Configure basic authentication and authorization -->
+	<security-role>
+		<description>Admin role, which can insert students and remove them</description>
+		<role-name>admin</role-name>
+	</security-role>
+	<security-constraint>
+		<display-name>Students constraints</display-name>
+		<web-resource-collection>
+			<web-resource-name>student</web-resource-name>
+			<description>Here we protect all paths</description>
+			<url-pattern>/*</url-pattern>
+		</web-resource-collection>
+		<auth-constraint>
+			<description>Here we describe who has access</description>
+			<role-name>admin</role-name>
+		</auth-constraint>
+	</security-constraint>
+	<login-config>
+		<auth-method>FORM</auth-method>
+		<form-login-config>
+			<form-login-page>/login.jsp</form-login-page>
+			<form-error-page>/loginerror</form-error-page>
+		</form-login-config>
+	</login-config>
+	<session-config>
+		<session-timeout>30</session-timeout>
+	</session-config>
 </web-app>

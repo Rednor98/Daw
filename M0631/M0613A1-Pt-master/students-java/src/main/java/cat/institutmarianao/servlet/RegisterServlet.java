@@ -4,10 +4,10 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import cat.institutmarianao.dao.ModuleDao;
-import cat.institutmarianao.dao.StudentDao;
 import cat.institutmarianao.model.Module;
 import cat.institutmarianao.model.Student;
+import cat.institutmarianao.service.ModuleService;
+import cat.institutmarianao.service.StudentService;
 import jakarta.annotation.Resource;
 import jakarta.ejb.EJB;
 import jakarta.servlet.RequestDispatcher;
@@ -26,9 +26,9 @@ public class RegisterServlet extends HttpServlet {
 	@Resource
 	private Validator validator;
 	@EJB
-	private ModuleDao moduleDao;
+	private ModuleService moduleService;
 	@EJB
-	private StudentDao studentDao;
+	private StudentService studentService;
 
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -36,7 +36,7 @@ public class RegisterServlet extends HttpServlet {
 		try {
 			Student student = new Student();
 			request.getSession().setAttribute("student", student);
-			request.setAttribute("modules", moduleDao.findAllByCycleCode(request.getParameter("cycle")));
+			request.setAttribute("modules", moduleService.findAllByCycleCode(request.getParameter("cycle")));
 			request.setAttribute("cycle", request.getParameter("cycle"));
 			request.getRequestDispatcher("register.jsp").forward(request, response);
 		} catch (Exception e) {
@@ -64,7 +64,7 @@ public class RegisterServlet extends HttpServlet {
 			List<Module> lsModules = new ArrayList<Module>();
 
 			for (String mo : modulesCodes) {
-				Module newModule = moduleDao.findByPk(mo, request.getParameter("cycle"));
+				Module newModule = moduleService.findByPk(mo, request.getParameter("cycle"));
 
 				lsModules.add(newModule);
 			}
@@ -78,14 +78,14 @@ public class RegisterServlet extends HttpServlet {
 
 			errors.addAll(validator.validate(student));
 
-			RequestDispatcher dispatcher;
+			RequestDispatcher dispatcher = null;
 			if (errors.isEmpty()) {
-
-				dispatcher = request.getRequestDispatcher("student.jsp");
+				dispatcher = request.getRequestDispatcher("students.jsp");
 			} else {
 				dispatcher = request.getRequestDispatcher("register.jsp");
 				request.setAttribute("errors", errors);
 			}
+			studentService.add(student);
 			request.setAttribute("student", student);
 			request.getSession().removeAttribute("student");
 			
