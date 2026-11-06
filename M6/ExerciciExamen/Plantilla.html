@@ -9,19 +9,119 @@
         window.onload = function () {
             let resultat = document.getElementById("resultat");
             document.getElementById("Boton1").onclick = function () {
-                let date = document.getElementById("date");
-                let alçada = parseFloat(document.getElementById("alçada"));
-                let pes = parseInt(document.getElementById("pes"));
-                let sexe = document.getElementById("sexe");
+                let date = document.getElementById("date").value;
+                let alçada = parseFloat(document.getElementById("alçada").value);
+                let pes = parseInt(document.getElementById("pes").value);
+                let sexe = document.getElementById("sexe").value;
 
-                if (!validatFormat(date)) {
+                let info = "";
+                let res = validaData(date)
 
+
+                //=============================== Data
+                if (date === "") {
+                    alert("La data no esta informada");
+                    return;
                 }
+
+                if (!res[0]) {
+                    alert("No es una data correcta");
+                    return;
+                } else {
+                    date = res[1];
+                }
+                let dateYearNow = new Date();
+                let edatPersona = dateYearNow.getFullYear() - date.getFullYear();
+
+                if (edatPersona < 10) {
+                    alert("La persona no es mayor o igual a 10 anys!");
+                    return;
+                }
+                //=============================== 
+                //=============================== Alçada
+                if (isNaN(alçada) || alçada == "") {
+                    alert("Te que ser un numero y te que estar omplert");
+                    return;
+                }
+                if (alçada <= 0) {
+                    alert("Te que ser mayor de 0");
+                    return;
+                }
+                //===============================
+                //=============================== Pes
+                if (isNaN(pes) || pes == "") {
+                    alert("Te que ser un numero y te que estar omplert");
+                    return;
+                }
+                if (pes <= 0) {
+                    alert("Te que ser mayor de 0");
+                    return;
+                }
+                //===============================
+                //=============================== Sexe
+                if (sexe === "") {
+                    alert("El sexe te que esta omplert");
+                    return;
+                }
+
+                if (sexe !== "H" && sexe !== "D") {
+                    alert("El sexe te que se o H (Home) o D (Dona)")
+                    return;
+                }
+                //===============================
+                let IMC = Math.round(pes / (alçada * alçada));
+                info += "Resultat:";
+                info += `<p>Edat: ${edatPersona} anys</p>`;
+                info += `<p>IMC: ${IMC}</p>`;
+                let diagnostic = `Diagnostic:`;
+
+                if (edatPersona < 16) {
+                    if (IMC == 0 || IMC <= 13) {
+                        info += `${diagnostic} Desnutrició`;
+                    } else if (IMC == 13 || IMC == 14) {
+                        info += `${diagnostic} Baix pes`;
+                    } else if (IMC == 14 || IMC <= 19) {
+                        info += `${diagnostic} Normal`;
+                    } else if (IMC >= 19) {
+                        info += `${diagnostic} Sobrepès`;
+                    }
+                } else if (sexe === "H") {
+                    if (IMC == 0 || IMC <= 19) {
+                        info += `${diagnostic} Desnutrició`;
+                    } else if (IMC == 18 || IMC == 21) {
+                        info += `${diagnostic} Baix pes`;
+                    } else if (IMC == 21 || IMC <= 26) {
+                        info += `${diagnostic} Normal`;
+                    } else if (IMC >= 26) {
+                        info += `${diagnostic} Sobrepès`;
+                    }
+                } else if (sexe === "D") {
+                    if (IMC == 0 || IMC <= 17) {
+                        info += `${diagnostic} Desnutrició`;
+                    } else if (IMC == 17 || IMC == 21) {
+                        info += `${diagnostic} Baix pes`;
+                    } else if (IMC == 21 || IMC <= 25) {
+                        info += `${diagnostic} Normal`;
+                    } else if (IMC >= 25) {
+                        info += `${diagnostic} Sobrepès`;
+                    }
+                }
+                resultat.innerHTML = info;
+
             }
         }
-        function validatFormat(data) {
-            let regex = /^\d{2}\/\d{2}\/\d{4}$/;
-            return regex.test(data);
+        function validaData(data) {
+            let arrayData = data.split("/");
+            let dia = parseInt(arrayData[0]);
+            let mes = parseInt(arrayData[1]);
+            let any = parseInt(arrayData[2]);
+            let objecteData = new Date(any, mes - 1, dia); //El mes comença per 0 (Gener)
+            if (objecteData.getFullYear() === any && objecteData.getMonth() === (mes - 1)
+                && objecteData.getDate() === dia) {
+                return [true, objecteData];
+            } else {
+                return [false, null];
+            }
         }
     </script>
 </head>
