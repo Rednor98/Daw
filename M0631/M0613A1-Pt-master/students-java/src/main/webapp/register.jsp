@@ -32,50 +32,30 @@
 			</div>
 		</div>
 
-		<div class="alert alert-danger alert-dismissible fade show"
-			role="alert">
-			<button type="button" class="btn-close" data-bs-dismiss="alert"
-				aria-label="Close"></button>
 
-			<p class="mb-1">
-				<strong>Surname:</strong> must not be blank
-			</p>
-
-			<p class="mb-1">
-				<strong>Name:</strong> must not be blank
-			</p>
-
-			<p class="mb-1">
-				<strong>Dni:</strong> has invalid format. Must be like 12345678X
-			</p>
-
-			<p class="mb-1">
-				<strong>Modules:</strong> must not be empty
-			</p>
-
-		</div>
-
-
-<c:if test="${not empty errors}">
-					<c:forEach items="${errors}" var="error">
-						<p style="color: red">
-							<c:out value="${error.message}" escapeXml="false" />
-						</p>
-					</c:forEach>
-				</c:if>
+		<c:if test="${not empty errors}">
+			<div class="alert alert-danger alert-dismissible fade show"
+				role="alert">
+				<button type="button" class="btn-close" data-bs-dismiss="alert"
+					aria-label="Close"></button>
+				<c:forEach items="${errors}" var="error">
+					<p class="mb-1">
+						<strong>${error.propertyPath}:</strong> ${error.message}
+					</p>
+				</c:forEach>
+			</div>
+		</c:if>
 
 		<h1>New ${cycle} register</h1>
 		<div class="container my-4">
 			<form action="register" method="POST">
-				
-
-
 				<div class="row g-3">
 					<div class="col-md-6 col-lg-5">
 						<div class="input-group mb-3">
 							<div class="input-group mb-3">
-								<span class="input-group-text"><i class="bi bi-card-heading"></i></span>
-								<input type="text" id="dni" name="dni" placeholder="Dni" value="${sessionScope.student.dni }" />
+								<span class="input-group-text"><i
+									class="bi bi-card-heading"></i></span> <input type="text" id="dni"
+									name="dni" placeholder="Dni" value="${student.dni }" />
 							</div>
 						</div>
 						<div class="input-group mb-3">
@@ -97,7 +77,7 @@
 							<div class="input-group mb-3">
 								<span class="input-group-text"><i class="bi bi-envelope"></i></span>
 								<input type="text" name="email" id="email" placeholder="Email"
-									value="${s tudent.email }" />
+									value="${student.email }" />
 							</div>
 						</div>
 
@@ -114,11 +94,19 @@
 
 						<div class="input-group mb-3">
 							<span class="input-group-text"><i class="bi bi-list-task"></i></span>
-							<div class="scroll form-control is-invalid">
+							<div class="scroll form-control">
 								<c:forEach var="module" items="${modules}">
+									<c:set var="checked" value="" />
+									<c:forEach var="selected" items="${student.modules}">
+										<c:if test="${selected.code == module.code}">
+											<c:set var="checked" value="checked" />
+										</c:if>
+									</c:forEach>
+
 									<div class="form-check">
 										<input type="checkbox" name="moduleCode"
-											value="${module.code}"> ${module.code }-${module.name }
+											value="${module.code}" ${checked}>
+										${module.code}-${module.name}
 									</div>
 								</c:forEach>
 							</div>
