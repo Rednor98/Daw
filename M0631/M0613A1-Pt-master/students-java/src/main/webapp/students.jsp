@@ -35,14 +35,43 @@
 					<td>${student.surname}</td>
 					<td>${student.email}</td>
 					<td>${student.cycle.code}</td>
+					<td><c:forEach var="modul" items="${student.modules}">
+							<div class="form-check">
+								<p>${modul.code}-${modul.name}</p>
+							</div>
+						</c:forEach></td>
 					<td>
-						<c:forEach var="modul" items="${student.modules}">
-						<div class="form-check">
-							<p>${modul.code}- ${modul.name}</p>
+						<button type="button" class="btn btn-danger"
+							data-bs-toggle="modal"
+							data-bs-target="#removeModal${student.dni}">Remove</button>
+
+						<div class="modal fade" id="removeModal${student.dni}"
+							tabindex="-1" aria-labelledby="removeModalLabel${student.dni}"
+							aria-hidden="true">
+							<div class="modal-dialog">
+								<div class="modal-content">
+									<form action="remove" method="post">
+										<input type="hidden" name="dni" value="${student.dni}">
+
+										<div class="modal-header">
+											<h1 class="modal-title fs-5"
+												id="removeModalLabel${student.dni}">Confirm remove</h1>
+											<button type="button" class="btn-close"
+												data-bs-dismiss="modal" aria-label="Close"></button>
+										</div>
+										<div class="modal-body">
+											Are you sure you wish to delete student with dni = <strong>${student.dni}</strong>
+										</div>
+										<div class="modal-footer">
+											<button type="submit" class="btn btn-danger">Remove</button>
+											<button type="button" class="btn btn-secondary"
+												data-bs-dismiss="modal">Cancel</button>
+										</div>
+									</form>
+								</div>
+							</div>
 						</div>
-						</c:forEach>
 					</td>
-					<td><button type="button" class="btn btn-danger" action="/remove">Remove</button></td>
 				</tr>
 			</c:forEach>
 		</table>

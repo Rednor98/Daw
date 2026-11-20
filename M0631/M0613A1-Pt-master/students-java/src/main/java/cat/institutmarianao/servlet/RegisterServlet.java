@@ -11,7 +11,6 @@ import cat.institutmarianao.service.ModuleService;
 import cat.institutmarianao.service.StudentService;
 import jakarta.annotation.Resource;
 import jakarta.ejb.EJB;
-import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -23,6 +22,7 @@ import jakarta.validation.Validator;
 //TODO Implement the servlet to handle student registration, including form validation
 @WebServlet(urlPatterns = { "/register" })
 public class RegisterServlet extends HttpServlet {
+
 
 	@Resource
 	private Validator validator;
