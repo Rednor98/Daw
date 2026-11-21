@@ -1,4 +1,5 @@
 <%@ page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="jakarta.tags.core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,17 +21,26 @@
 
 						<div class="card-body">
 
+							<c:if test="${not empty requestScope.error}">
+								<div class="alert alert-danger alert-dismissible fade show py-2"
+									role="alert">
+									<small>The given credentials are wrong</small>
+									<button type="button" class="btn-close py-2"
+										data-bs-dismiss="alert" aria-label="Close"></button>
+								</div>
+							</c:if>
+
 							<div class="input-group py-1">
 								<span class="input-group-text"> <i
 									class="bi bi-person-fill"></i>
 								</span> <input class="form-control" placeholder="Username"
-									name="j_username" type="text">
+									name="j_username" type="text" required autofocus>
 							</div>
 
 							<div class="input-group py-1">
 								<span class="input-group-text"> <i class="bi bi-key-fill"></i>
 								</span> <input class="form-control" placeholder="Password"
-									name="j_password" type="password">
+									name="j_password" type="password" required>
 							</div>
 						</div>
 						<div class="card-footer bg-secondary-subtle">
@@ -43,3 +53,4 @@
 		</div>
 	</form>
 </body>
+</html>
